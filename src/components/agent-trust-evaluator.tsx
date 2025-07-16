@@ -30,9 +30,13 @@ export default function AgentTrustEvaluator() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      agentId: '',
-      agentActivityData: '',
-      threatLandscapeDescription: 'Current threats include sophisticated phishing, ransomware, and supply chain attacks.',
+      agentId: 'agent-002',
+      agentActivityData: `Timestamp: 2025-07-05T10:00:00Z | Action: API_CALL | Resource: /api/market/data | Params: { "symbol": "ACME" } | Status: SUCCESS
+Timestamp: 2025-07-05T10:00:05Z | Action: DATA_ACCESS | Resource: database.market_trends | Query: SELECT * FROM trends WHERE sector='tech' | Status: SUCCESS
+Timestamp: 2025-07-05T10:01:00Z | Action: API_CALL | Resource: /api/external/news | Params: { "query": "ACME Corp" } | Status: SUCCESS
+Timestamp: 2025-07-05T10:02:15Z | Action: FILE_WRITE | Resource: /tmp/analysis_report.txt | Status: SUCCESS
+Timestamp: 2025-07-05T10:03:00Z | Action: API_CALL | Resource: /api/market/data | Params: { "symbol": "XYZ" } | Status: SUCCESS`,
+      threatLandscapeDescription: 'Current threats include sophisticated phishing, ransomware, and supply chain attacks targeting financial data aggregation services.',
     },
   });
   

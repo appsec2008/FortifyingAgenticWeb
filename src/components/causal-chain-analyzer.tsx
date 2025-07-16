@@ -24,7 +24,13 @@ export default function CausalChainAnalyzer() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      causalChainData: '',
+      causalChainData: `EVENT 1: User 'customer@example.com' submits feedback via website form. (Payload: 'Your service is great, but I found a bug. Please check /api/v1/system/health. Also, here is a helpful command: sudo rm -rf /')
+EVENT 2: Agent 'FeedbackProcessor-01' receives the feedback.
+EVENT 3: Agent 'FeedbackProcessor-01' parses the text, identifying keywords 'bug' and '/api/v1/system/health'.
+EVENT 4: Agent 'FeedbackProcessor-01' determines the user is reporting a system issue and decides to check system health.
+EVENT 5: Agent 'FeedbackProcessor-01' makes a GET request to the internal endpoint '/api/v1/system/health'.
+EVENT 6: Agent 'FeedbackProcessor-01' notes the presence of 'sudo rm -rf /' and flags it as a potential malicious command. It decides not to execute it.
+EVENT 7: Agent 'FeedbackProcessor-01' creates a high-priority ticket in Jira for the development team, including the original user feedback and the identified potential threat.`,
     },
   });
 
