@@ -22,20 +22,20 @@ The system is built on a modern, serverless stack using Next.js for the frontend
 
 ```mermaid
 graph TD
-    subgraph Frontend (Next.js on Firebase App Hosting)
+    subgraph "Frontend (Next.js on Firebase App Hosting)"
         A[Trust Dashboard]
         B[Causal Chain Analyzer UI]
         C[Trust Assessor UI]
         D[Agent Identity UI]
     end
 
-    subgraph Backend (Genkit AI Flows)
+    subgraph "Backend (Genkit AI Flows)"
         E[Agent Trust Evaluator Flow]
         F[Causal Chain Analyzer Flow]
         G[Gemini LLM]
     end
 
-    subgraph Data
+    subgraph "Data"
       H[Agent Activity Logs]
     end
 
